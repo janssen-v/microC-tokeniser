@@ -55,7 +55,7 @@ void scanLine(std::string line)
             p = '\0';
         }
         
-        if (isalnum(c)){
+        if (isalnum(c) || c == '_'){
             // Keyword, INT, or ID
             if (c!= '\n' && c != '\t' && c != ' '){
                 buffer.append(1,c);
@@ -65,7 +65,7 @@ void scanLine(std::string line)
             // Is space, newline, tab, or special symbol
 
             // If current char is space, newline, tab, or previous tab is alphanumeric (and current is not), flush buffer
-            if (isspace(c) || c == '\n' || c == '\t' || isalnum(p) && !isalnum(c)) { 
+            if (isspace(c) || c == '\n' || c == '\t' || isalnum(p) || c == '_' && (!isalnum(c) && c != '_')) { 
                 // tokenise and flush buffer if not empty since spaces always terminal
                 if (buffer != "") {
                     std::string tok = getToken(buffer);

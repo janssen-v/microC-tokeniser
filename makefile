@@ -4,8 +4,13 @@ CXXFLAGS += -g -std=c++17
 
 all:
 	make build
+	make activate_script
 	make run
 	make grade
+	
+
+activate_script:
+	chmod +x run_scanner.sh
 
 build:
 	@echo "Building..."
